@@ -1,17 +1,18 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaUser } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa'
+import { SiLeetcode } from 'react-icons/si'
 
 export default function Hero() {
   return (
     <section id="home" className="hero">
       <div className="hero-inner">
         <div className="hero-copy">
-          <p className="hero-eyebrow">Java Full-Stack Developer</p>
+          <p className="hero-eyebrow">Software Engineer</p>
           <h1 className="hero-title">
             Building robust, scalable <span className="accent">web applications</span> end to end.
           </h1>
           <p className="hero-subtitle">
-          Software Engineer specializing in Java, Spring Boot, React, 
-          and PostgreSQL — building reliable web applications and looking for my next opportunity.
+            Software Engineer with experience in Java,Spring Boot, React, and PostgreSQL — building
+            reliable backend services and full-stack applications. Open to software engineering opportunities.
           </p>
 
           <div className="hero-cta">
@@ -30,6 +31,7 @@ export default function Hero() {
             <a href="https://github.com/sandeepmandal-dev" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
             <a href="https://www.linkedin.com/in/sandeep-mandal10/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
             <a href="mailto:sandeepmandal1779@gmail.com" aria-label="Email"><FaEnvelope /></a>
+            <a href="https://leetcode.com/u/sandeep_mandal_10/" target="_blank" rel="noreferrer" aria-label="LeetCode"><SiLeetcode /></a>
           </div>
         </div>
 
@@ -41,7 +43,7 @@ export default function Hero() {
                <img src="/profile.jpg" alt="Your Name" className="hero-photo" />
           */}
           <div className="hero-photo hero-photo-placeholder">
-            <img src='public/profile.JPG' width="100% "></img>
+            <img src='public/profile.png' width="100% "></img>
           </div>
           <p className="hero-name">Sandeep Mandal</p>
         </div>

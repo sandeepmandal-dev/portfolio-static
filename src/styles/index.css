@@ -273,8 +273,8 @@ button {
 
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--cyan);
   margin-bottom: 1rem;
@@ -321,7 +321,6 @@ button {
 .hero-photo {
   width: min(340px, 100%);
   aspect-ratio: 1 / 1;
-  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }
 .hero-photo-placeholder {
@@ -335,7 +334,6 @@ button {
   color: var(--text-on-ink-muted);
   font-size: 0.85rem;
   text-align: center;
-  padding: 0.8rem;
 }
 .hero-photo-placeholder svg {
   font-size: 3.5rem;
@@ -920,14 +918,7 @@ img.hero-photo {
   padding-top: 1.5rem;
   font-size: 0.8rem;
 }
-.footer-brand {
-  grid-column: 1;
-  color: var(--text-on-ink);
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
+
 .footer-role {
   grid-column: 1;
   margin: 0;

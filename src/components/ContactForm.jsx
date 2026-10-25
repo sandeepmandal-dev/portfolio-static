@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane } from 'react-icons/fa'
+import { SiLeetcode } from 'react-icons/si'
 
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
 const RATE_LIMIT_MS = 60_000 // 1 submission per 60 seconds per browser
@@ -92,6 +93,9 @@ export default function ContactForm() {
               <a href="https://www.linkedin.com/in/sandeep-mandal10/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                 <FaLinkedin />
               </a>
+               <a href="https://leetcode.com/u/sandeep_mandal_10/" target="_blank" rel="noreferrer" aria-label="LeetCode">
+               <SiLeetcode />
+               </a>
             </div>
           </div>
         </div>
