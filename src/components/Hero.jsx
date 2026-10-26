@@ -36,14 +36,20 @@ export default function Hero() {
         </div>
 
         <div className="hero-photo-wrap">
-          {/*
-            Replace this placeholder with your real photo:
-            1. Add your image file to the `public/` folder, e.g. public/profile.jpg
-            2. Replace the placeholder <div> below with:
-               <img src="/profile.jpg" alt="Your Name" className="hero-photo" />
-          */}
-          <div className="hero-photo hero-photo-placeholder">
-            <img src='public/profile.png' width="100% "></img>
+          <div className="hero-visual">
+            <span className="hero-orbit hero-orbit-one" aria-hidden="true" />
+            <span className="hero-orbit hero-orbit-two" aria-hidden="true" />
+            <span className="hero-orb hero-orb-one" aria-hidden="true" />
+            <span className="hero-orb hero-orb-two" aria-hidden="true" />
+            <span className="hero-cube" aria-hidden="true">
+              <span className="hero-cube-face hero-cube-front" />
+              <span className="hero-cube-face hero-cube-back" />
+              <span className="hero-cube-face hero-cube-right" />
+              <span className="hero-cube-face hero-cube-left" />
+              <span className="hero-cube-face hero-cube-top" />
+              <span className="hero-cube-face hero-cube-bottom" />
+            </span>
+            <img className="hero-photo" src="/profile.png" alt="Sandeep Mandal" />
           </div>
           <p className="hero-name">Sandeep Mandal</p>
         </div>
