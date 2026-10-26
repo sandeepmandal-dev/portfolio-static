@@ -429,7 +429,7 @@ button {
   50% { transform: translate3d(4px, -10px, 28px); }
 }
 .hero-name {
-  margin: 1.25rem 0 0;
+  margin: 0.2rem 0 0;
   color: var(--text-on-ink);
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
