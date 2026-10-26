@@ -1,15 +1,99 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { FaEnvelope, FaGithub, FaLinkedin, FaPaperPlane } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
 const RATE_LIMIT_MS = 60_000 // 1 submission per 60 seconds per browser
 const RATE_LIMIT_KEY = 'portfolio_last_submit'
+const CONTACT_PLACEHOLDERS = {
+  name: 'Full Name',
+  email: 'abc@gmail.com',
+  subject: 'Project inquiry',
+  message: 'Tell me about your project or idea...',
+}
 
 export default function ContactForm() {
   const [status, setStatus] = useState('idle') // idle | sending | success | error | blocked
   const [error, setError] = useState('')
+  const [placeholders, setPlaceholders] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
   const formRef = useRef(null)
+
+  useEffect(() => {
+    const fields = Object.entries(CONTACT_PLACEHOLDERS)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (reducedMotion) {
+      setPlaceholders(CONTACT_PLACEHOLDERS)
+      return undefined
+    }
+
+    const timeoutIds = new Set()
+    const schedule = (callback, delay) => {
+      const timeoutId = window.setTimeout(() => {
+        timeoutIds.delete(timeoutId)
+        callback()
+      }, delay)
+      timeoutIds.add(timeoutId)
+    }
+
+    const animateField = (fieldIndex, characterIndex = 0, deleting = false) => {
+      const [field, text] = fields[fieldIndex]
+      const input = document.getElementById(field === 'subject' ? 'message-subject' : field)
+
+      if (input === document.activeElement) {
+        setPlaceholders((current) => ({ ...current, [field]: text }))
+        schedule(() => waitForBlur(fieldIndex), 150)
+        return
+      }
+
+      const nextCharacterIndex = deleting ? characterIndex - 1 : characterIndex + 1
+      setPlaceholders((current) => ({
+        ...current,
+        [field]: text.slice(0, Math.max(0, nextCharacterIndex)),
+      }))
+
+      if (!deleting && nextCharacterIndex < text.length) {
+        schedule(() => animateField(fieldIndex, nextCharacterIndex), 45)
+      } else if (!deleting) {
+        schedule(() => animateField(fieldIndex, text.length, true), 2000)
+      } else if (nextCharacterIndex >= 0) {
+        schedule(() => animateField(fieldIndex, nextCharacterIndex, true), 22)
+      } else {
+        schedule(() => animateField(fieldIndex), 250)
+      }
+    }
+
+    const waitForBlur = (fieldIndex) => {
+      const [field] = fields[fieldIndex]
+      const input = document.getElementById(field === 'subject' ? 'message-subject' : field)
+
+      if (input === document.activeElement) {
+        schedule(() => waitForBlur(fieldIndex), 150)
+        return
+      }
+
+      setPlaceholders((current) => ({ ...current, [field]: '' }))
+      schedule(() => animateField(fieldIndex), 150)
+    }
+
+    fields.forEach((_, fieldIndex) => {
+      schedule(() => animateField(fieldIndex), 300)
+    })
+
+    return () => timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId))
+  }, [])
+
+  const completePlaceholder = (field) => {
+    setPlaceholders((current) => ({
+      ...current,
+      [field]: CONTACT_PLACEHOLDERS[field],
+    }))
+  }
 
   const isRateLimited = () => {
     const last = localStorage.getItem(RATE_LIMIT_KEY)
@@ -122,17 +206,17 @@ export default function ContactForm() {
           <div className="contact-fields-row">
             <div className="contact-field">
               <label className="field-label" htmlFor="name">Your Name</label>
-              <input id="name" name="name" className="text-input" type="text" placeholder="Full Name" required maxLength={100} />
+              <input id="name" name="name" className="text-input" type="text" placeholder={placeholders.name} onFocus={() => completePlaceholder('name')} required maxLength={100} />
             </div>
             <div className="contact-field">
               <label className="field-label" htmlFor="email">Email Address</label>
-              <input id="email" name="email" className="text-input" type="email" placeholder="abc@gmail.com" required maxLength={150} />
+              <input id="email" name="email" className="text-input" type="email" placeholder={placeholders.email} onFocus={() => completePlaceholder('email')} required maxLength={150} />
             </div>
           </div>
 
           <div className="contact-field">
             <label className="field-label" htmlFor="message-subject">Subject</label>
-            <input id="message-subject" name="project_subject" className="text-input" type="text" placeholder="Project inquiry" required maxLength={150} />
+            <input id="message-subject" name="project_subject" className="text-input" type="text" placeholder={placeholders.subject} onFocus={() => completePlaceholder('subject')} required maxLength={150} />
           </div>
 
           <div className="contact-field">
@@ -144,7 +228,8 @@ export default function ContactForm() {
               rows={5}
               required
               maxLength={2000}
-              placeholder="Tell me about your project or idea..."
+              placeholder={placeholders.message}
+              onFocus={() => completePlaceholder('message')}
             />
           </div>
 
