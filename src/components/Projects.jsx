@@ -23,11 +23,11 @@ const PROJECTS = [
   {
     id: 3,
     title: 'Portfolio Website (this project)',
-    description: 'Personal portfolio built as a fast, free-to-host static site with a spam-protected contact form.',
-    techStack: 'React,Vite,Web3Forms',
-    githubUrl: 'https://github.com/yourusername/portfolio-app',
+    description: 'Developed a modern, responsive portfolio website using React, JavaScript, Vite, Tailwind CSS, and custom CSS, featuring reusable components, smooth animations, and a clean UI to showcase my skills and projects..',
+    techStack: 'React,Vite,Web3Forms,JavaScript',
+    githubUrl: 'https://github.com/sandeepmandal-dev/portfolio-static',
     liveUrl: 'https://yourportfolio.example.com',
-    imageUrl: 'https://placehold.co/600x400?text=Portfolio',
+    imageUrl: 'public/portfolio-HeroImg.png',
   },
 ]
 
