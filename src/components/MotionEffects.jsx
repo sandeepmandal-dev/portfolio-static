@@ -30,5 +30,44 @@ export default function MotionEffects() {
     }
   }, [])
 
+  useEffect(() => {
+    const pointerQuery = window.matchMedia(
+      '(pointer: fine) and (prefers-reduced-motion: no-preference)',
+    )
+    if (!pointerQuery.matches) return undefined
+
+    const cards = document.querySelectorAll(
+      '.stat-card, .skill-card, .project-card, .experience-card, .contact-form',
+    )
+    const cleanups = []
+
+    cards.forEach((card) => {
+      let frameId = 0
+      let pointerX = 0
+      let pointerY = 0
+
+      const updateLight = (event) => {
+        const bounds = card.getBoundingClientRect()
+        pointerX = ((event.clientX - bounds.left) / bounds.width) * 100
+        pointerY = ((event.clientY - bounds.top) / bounds.height) * 100
+        if (frameId) return
+
+        frameId = window.requestAnimationFrame(() => {
+          card.style.setProperty('--card-light-x', `${pointerX}%`)
+          card.style.setProperty('--card-light-y', `${pointerY}%`)
+          frameId = 0
+        })
+      }
+
+      card.addEventListener('pointermove', updateLight, { passive: true })
+      cleanups.push(() => {
+        card.removeEventListener('pointermove', updateLight)
+        if (frameId) window.cancelAnimationFrame(frameId)
+      })
+    })
+
+    return () => cleanups.forEach((cleanup) => cleanup())
+  }, [])
+
   return null
 }

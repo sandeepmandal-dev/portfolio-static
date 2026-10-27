@@ -520,6 +520,79 @@ button {
   font-size: 0.8rem;
 }
 
+@property --card-light-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.stat-card,
+.skill-card,
+.project-card,
+.experience-card,
+.contact-form {
+  --card-light-x: 50%;
+  --card-light-y: 50%;
+  position: relative;
+  isolation: isolate;
+}
+.stat-card > *,
+.skill-card > *,
+.project-card > *,
+.experience-card > *,
+.contact-form > * {
+  position: relative;
+  z-index: 2;
+}
+.stat-card::before,
+.skill-card::before,
+.project-card::before,
+.contact-form::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle 170px at var(--card-light-x) var(--card-light-y),
+    rgba(73, 215, 237, 0.18),
+    transparent 78%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.stat-card::after,
+.skill-card::after,
+.project-card::after,
+.experience-card::after,
+.contact-form::after {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--card-light-angle),
+    transparent 0deg 300deg,
+    rgba(34, 181, 209, 0.3) 325deg,
+    #83f0ff 348deg,
+    transparent 360deg
+  );
+  opacity: 0.55;
+  pointer-events: none;
+  animation: card-boundary-rotation 7s linear infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  transition: opacity 0.25s ease;
+}
+@keyframes card-boundary-rotation {
+  to { --card-light-angle: 360deg; }
+}
+
 /* About */
 .about-grid {
   display: grid;
@@ -736,6 +809,13 @@ button {
   margin: 0;
   color: var(--text-on-paper-muted);
   font-size: 0.9rem;
+}
+.experience-card:hover {
+  background-image: radial-gradient(
+    circle 170px at var(--card-light-x) var(--card-light-y),
+    rgba(73, 215, 237, 0.18),
+    transparent 78%
+  );
 }
 .experience-technologies {
   display: flex;
@@ -1201,6 +1281,16 @@ button {
 .footer-meta .footer-love { color: #f05b67; }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .stat-card,
+  .skill-card,
+  .project-card,
+  .experience-card,
+  .contact-form {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
   .stat-card:hover,
   .skill-card:hover,
   .experience-card:hover {
@@ -1208,10 +1298,27 @@ button {
     border-color: rgba(34, 181, 209, 0.55);
     box-shadow: 0 18px 34px rgba(0, 0, 0, 0.28);
   }
+  .stat-card:hover::before,
+  .skill-card:hover::before,
+  .project-card:hover::before,
+  .contact-form:hover::before {
+    opacity: 1;
+  }
+  .stat-card:hover::after,
+  .skill-card:hover::after,
+  .project-card:hover::after,
+  .experience-card:hover::after,
+  .contact-form:hover::after {
+    opacity: 1;
+  }
   .project-card:hover {
     transform: perspective(1000px) rotateX(2deg) rotateY(-1.5deg) translateY(-5px);
     border-color: rgba(34, 181, 209, 0.55);
     box-shadow: var(--shadow-lg);
+  }
+  .contact-form:hover {
+    border-color: rgba(34, 181, 209, 0.55);
+    box-shadow: 0 0 34px rgba(14, 152, 181, 0.2), var(--shadow-lg);
   }
 }
 
@@ -1342,5 +1449,13 @@ body.motion-ready .motion-reveal {
   .section::before,
   .section::after {
     animation: none;
+    .stat-card::after,
+    .skill-card::after,
+    .project-card::after,
+    .experience-card::after,
+    .contact-form::after {
+      animation: none;
+      --card-light-angle: 348deg;
+    }
   }
 }
