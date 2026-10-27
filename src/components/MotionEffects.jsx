@@ -6,7 +6,7 @@ export default function MotionEffects() {
     if (reducedMotion.matches || !('IntersectionObserver' in window)) return undefined
 
     const targets = document.querySelectorAll(
-      '.hero-copy, .hero-photo-wrap, main .section-inner, .stat-card, .skill-card, .project-card, .footer-inner',
+      '.hero-copy, .hero-photo-wrap, main .section-inner, .stat-card, .skill-card, .experience-card, .experience-empty, .project-card, .footer-inner',
     )
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

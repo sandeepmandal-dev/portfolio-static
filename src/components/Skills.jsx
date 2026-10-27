@@ -17,6 +17,11 @@ import {
   SiJunit5,
   SiPostman,
   SiJsonwebtokens,
+  SiSwagger,
+  SiAngular,
+  SiTypescript,
+  SiLinux,
+  SiApachetomcat,
 } from 'react-icons/si'
 
 const SKILL_GROUPS = [
@@ -28,14 +33,18 @@ const SKILL_GROUPS = [
       { name: 'Spring Security', icon: SiSpringsecurity },
       { name: 'Hibernate / JPA', icon: SiHibernate },
       { name: 'Maven', icon: SiApachemaven },
+      { name: 'Apache Tomcat', icon: SiApachetomcat },
+      { name: 'Swagger', icon: SiSwagger },
     ],
   },
   {
     category: 'Frontend',
     skills: [
       { name: 'React', icon: SiReact },
+      { name: 'Angular', icon: SiAngular },
       { name: 'Vite', icon: SiVite },
       { name: 'JavaScript', icon: SiJavascript },
+      { name: 'TypeScript', icon: SiTypescript },
       { name: 'HTML5', icon: SiHtml5 },
       { name: 'CSS3', icon: FaCss3Alt },
     ],
@@ -52,6 +61,7 @@ const SKILL_GROUPS = [
     category: 'DevOps & Tools',
     skills: [
       { name: 'Docker', icon: SiDocker },
+      { name: 'Linux', icon: SiLinux },
       { name: 'Git', icon: SiGit },
       { name: 'GitHub', icon: SiGithub },
       { name: 'JUnit', icon: SiJunit5 },

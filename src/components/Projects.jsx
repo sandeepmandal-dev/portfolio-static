@@ -13,12 +13,12 @@ const PROJECTS = [
   },
   {
     id: 2,
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce application with product catalog, cart, checkout, and order management.',
+    title: '--Adding Soon--', //E-Commerce Platform
+    description: 'Full stack project',//'Full-stack e-commerce application with product catalog, cart, checkout, and order management.',
     techStack: 'Java,Spring Boot,React,PostgreSQL,Redis',
     githubUrl: 'https://github.com/yourusername/ecommerce-platform',
-    liveUrl: 'https://ecommerce-demo.example.com',
-    imageUrl: 'https://placehold.co/600x400?text=E-Commerce+Platform',
+    liveUrl: 'https://-demo.example.com',
+    imageUrl: 'https://placehold.co/600x400?text=Demo',
   },
   {
     id: 3,

@@ -1,6 +1,7 @@
 import Hero from '../components/Hero.jsx'
 import About from '../components/About.jsx'
 import Skills from '../components/Skills.jsx'
+import Experience from '../components/Experience.jsx'
 import Projects from '../components/Projects.jsx'
 import ContactForm from '../components/ContactForm.jsx'
 
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
+      <Experience />
       <Projects />
       <ContactForm />
     </>
