@@ -188,16 +188,16 @@ export default function ContactForm() {
           <h3>Send a Message</h3>
           {/* Required by Web3Forms to route the email */}
           <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-          <input type="hidden" name="subject" value="New message from portfolio site" />
+          <input type="hidden" name="subject" value="New Contact Message — Portfolio" />
           <input type="hidden" name="from_name" value="Portfolio Contact Form" />
 
           {/* Honeypot: real visitors never see this field */}
           <div className="honeypot-field" aria-hidden="true">
             <label htmlFor="company_website">Company Website</label>
             <input
-              type="text"
-              id="company_website"
-              name="company_website"
+              type="checkbox"
+              name="botcheck"
+              style={{ display: "none" }}
               tabIndex={-1}
               autoComplete="off"
             />
@@ -235,7 +235,7 @@ export default function ContactForm() {
 
           {(status === 'error' || status === 'blocked') && <p className="form-error">{error}</p>}
           {status === 'success' && (
-            <p className="form-success">Message sent — thanks for reaching out! I'll get back to you soon.</p>
+            <p className="form-success">Thank you for reaching out. I appreciate your interest and will get back to you as soon as possible.</p>
           )}
 
           <button className="btn btn-primary btn-full" type="submit" disabled={status === 'sending'}>
