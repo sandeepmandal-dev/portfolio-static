@@ -9,7 +9,7 @@ const PROJECTS = [
     techStack: 'Java, Spring Boot, Spring Security, JPA/Hibernate, PostgreSQL, Flyway, React, Vite, Tailwind CSS, Docker',
     githubUrl: 'https://github.com/sandeepmandal-dev/HRMS-Portal',
     liveUrl: 'https://taskmanager-demo.example.com',
-    imageUrl: 'public/hrms-portal-cover.png',
+    imageUrl: 'hrms-portal-cover.png',
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const PROJECTS = [
     techStack: 'React,Vite,Web3Forms,JavaScript',
     githubUrl: 'https://github.com/sandeepmandal-dev/portfolio-static',
     liveUrl: 'https://yourportfolio.example.com',
-    imageUrl: 'public/portfolio-HeroImg.png',
+    imageUrl: 'portfolio-HeroImg.png',
   },
 ]
 
