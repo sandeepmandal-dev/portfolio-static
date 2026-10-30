@@ -26,7 +26,7 @@ const PROJECTS = [
     description: 'Developed a modern, responsive portfolio website using React, JavaScript, Vite, Tailwind CSS, and custom CSS, featuring reusable components, smooth animations, and a clean UI to showcase my skills and projects..',
     techStack: 'React,Vite,Web3Forms,JavaScript',
     githubUrl: 'https://github.com/sandeepmandal-dev/portfolio-static',
-    liveUrl: 'https://yourportfolio.example.com',
+    // liveUrl: 'https://yourportfolio.example.com',
     imageUrl: 'portfolio-HeroImg.png',
   },
 ]
