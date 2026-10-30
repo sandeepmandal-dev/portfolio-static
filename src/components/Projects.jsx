@@ -8,18 +8,18 @@ const PROJECTS = [
     description: 'Full-stack HRMS covering onboarding, attendance, leave workflows and payroll for four user roles. Spring Boot and PostgreSQL backend with JWT auth, rotating refresh tokens and Flyway-managed schema; React and Tailwind front end; Dockerised.',
     techStack: 'Java, Spring Boot, Spring Security, JPA/Hibernate, PostgreSQL, Flyway, React, Vite, Tailwind CSS, Docker',
     githubUrl: 'https://github.com/sandeepmandal-dev/HRMS-Portal',
-    liveUrl: 'https://taskmanager-demo.example.com',
+    // liveUrl: 'https://taskmanager-demo.example.com',
     imageUrl: 'hrms-portal-cover.png',
   },
-  {
-    id: 2,
-    title: '--Adding Soon--', //E-Commerce Platform
-    description: 'Full stack project',//'Full-stack e-commerce application with product catalog, cart, checkout, and order management.',
-    techStack: 'Java,Spring Boot,React,PostgreSQL,Redis',
-    githubUrl: 'https://github.com/yourusername/ecommerce-platform',
-    liveUrl: 'https://-demo.example.com',
-    imageUrl: 'https://placehold.co/600x400?text=Demo',
-  },
+  // {
+  //   id: 2,
+  //   title: '--Adding Soon--', //E-Commerce Platform
+  //   description: 'Full stack project',//'Full-stack e-commerce application with product catalog, cart, checkout, and order management.',
+  //   techStack: 'Java,Spring Boot,React,PostgreSQL,Redis',
+  //   githubUrl: 'https://github.com/yourusername/ecommerce-platform',
+  //   liveUrl: 'https://-demo.example.com',
+  //   imageUrl: 'https://placehold.co/600x400?text=Demo',
+  // },
   {
     id: 3,
     title: 'Portfolio Website (this project)',
