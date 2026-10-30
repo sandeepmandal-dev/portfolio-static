@@ -49,28 +49,50 @@ export default function Experience() {
 
   useEffect(() => {
     const timeline = timelineRef.current
+    if (!timeline) return undefined
+
     const pointerQuery = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)')
     let frameId = 0
-    let pointerY = 0
+    let pointerY = null
 
-    const updateLight = (event) => {
-      pointerY = event.clientY
+    const updateLight = () => {
       if (frameId) return
 
       frameId = window.requestAnimationFrame(() => {
         const bounds = timeline.getBoundingClientRect()
-        const progress = Math.min(1, Math.max(0, (pointerY - bounds.top) / bounds.height))
-        timeline.style.setProperty('--experience-light-y', `${progress * 100}%`)
+        if (bounds.height > 0) {
+          const lightY = pointerY ?? window.innerHeight / 2
+          const progress = Math.min(1, Math.max(0, (lightY - bounds.top) / bounds.height))
+          timeline.style.setProperty('--experience-light-y', `${progress * 100}%`)
+        }
         frameId = 0
       })
     }
 
+    const updateLightFromPointer = (event) => {
+      pointerY = event.clientY
+      updateLight()
+    }
+
+    const updateLightFromScroll = () => {
+      pointerY = null
+      updateLight()
+    }
+
+    updateLight()
+    window.addEventListener('scroll', updateLightFromScroll, { passive: true })
+    document.addEventListener('scroll', updateLightFromScroll, { passive: true, capture: true })
+    window.addEventListener('resize', updateLight, { passive: true })
+
     if (pointerQuery.matches) {
-      timeline.addEventListener('pointermove', updateLight, { passive: true })
+      timeline.addEventListener('pointermove', updateLightFromPointer, { passive: true })
     }
 
     return () => {
-      timeline.removeEventListener('pointermove', updateLight)
+      window.removeEventListener('scroll', updateLightFromScroll)
+      document.removeEventListener('scroll', updateLightFromScroll, true)
+      window.removeEventListener('resize', updateLight)
+      timeline.removeEventListener('pointermove', updateLightFromPointer)
       if (frameId) window.cancelAnimationFrame(frameId)
     }
   }, [])
