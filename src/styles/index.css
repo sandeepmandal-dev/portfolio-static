@@ -1443,6 +1443,25 @@ body.motion-ready .motion-reveal {
   .hero-visual { width: min(330px, 100%); }
 }
 
+@media (max-width: 560px) {
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .skill-card {
+    min-width: 0;
+  }
+  .skill-logo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 135px), 1fr));
+  }
+  .skill-logo-item {
+    min-width: 0;
+  }
+  .skill-logo-item span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-photo,
   .hero-orbit,
