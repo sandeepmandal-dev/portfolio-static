@@ -29,20 +29,30 @@
           </div>
 
           <div className="about-stats">
-             <div className="stat-card">
+            <a
+              className="stat-card"
+              href="https://github.com/sandeepmandal-dev"
+              target="_blank"
+              rel="noreferrer"
+            >
               <span className="stat-number">5+</span>
               <span className="stat-label">Projects Delivered</span>
-            </div>
+            </a>
 
-            <div className="stat-card">
+            <a
+              className="stat-card"
+              href="https://leetcode.com/u/sandeep_mandal_10/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <span className="stat-number">350+</span>
               <span className="stat-label">DSA Problems Solved</span>
-            </div>
+            </a>
 
-            <div className="stat-card">
+            <a className="stat-card" href="#skills">
               <span className="stat-number">10+</span>
               <span className="stat-label">Technologies & Tools</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>
